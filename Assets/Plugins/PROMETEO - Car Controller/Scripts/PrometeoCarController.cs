@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PrometeoCarController : MonoBehaviour
 {
@@ -31,21 +32,18 @@ public class PrometeoCarController : MonoBehaviour
       [Range(1, 10)]
       public int handbrakeDriftMultiplier = 5; // How much grip the car loses when the user hit the handbrake.
       [Space(10)]
-      public Vector3 bodyMassCenter; // This is a vector that contains the center of mass of the car. I recommend to set this value
-                                    // in the points x = 0 and z = 0 of your car. You can select the value that you want in the y axis,
-                                    // however, you must notice that the higher this value is, the more unstable the car becomes.
-                                    // Usually the y value goes from 0 to 1.5.
+      public Vector3 bodyMassCenter;
 
     //WHEELS
 
-      //[Header("WHEELS")]
+    //[Header("WHEELS")]
 
-      /*
-      The following variables are used to store the wheels' data of the car. We need both the mesh-only game objects and wheel
-      collider components of the wheels. The wheel collider components and 3D meshes of the wheels cannot come from the same
-      game object; they must be separate game objects.
-      */
-      public GameObject frontLeftMesh;
+    /*
+    The following variables are used to store the wheels' data of the car. We need both the mesh-only game objects and wheel
+    collider components of the wheels. The wheel collider components and 3D meshes of the wheels cannot come from the same
+    game object; they must be separate game objects.
+    */
+    public GameObject frontLeftMesh;
       public WheelCollider frontLeftCollider;
       [Space(10)]
       public GameObject frontRightMesh;
@@ -57,9 +55,10 @@ public class PrometeoCarController : MonoBehaviour
       public GameObject rearRightMesh;
       public WheelCollider rearRightCollider;
 
+
     //PARTICLE SYSTEMS
 
-      [Space(20)]
+    [Space(20)]
       //[Header("EFFECTS")]
       [Space(10)]
       //The following variable lets you to set up particle systems in your car
@@ -82,10 +81,11 @@ public class PrometeoCarController : MonoBehaviour
       //The following variable lets you to set up a UI text to display the speed of your car.
       public bool useUI = false;
       public Text carSpeedText; // Used to store the UI object that is going to show the speed of the car.
+      public TextMeshProUGUI driftAmountText;
 
     //SOUNDS
 
-      [Space(20)]
+    [Space(20)]
       //[Header("Sounds")]
       [Space(10)]
       //The following variable lets you to set up sounds for your car such as the car engine or tire screech sounds.
@@ -111,30 +111,27 @@ public class PrometeoCarController : MonoBehaviour
       PrometeoTouchInput turnLeftPTI;
       public GameObject handbrakeButton;
       PrometeoTouchInput handbrakePTI;
-
     //CAR DATA
 
       [HideInInspector]
       public float carSpeed; // Used to store the speed of the car.
       [HideInInspector]
       public bool isDrifting; // Used to know whether the car is drifting or not.
-      public float driftAmount;
       [HideInInspector]
       public bool isTractionLocked; // Used to know whether the traction of the car is locked or not.
 
+
     //PRIVATE VARIABLES
 
-      /*
-      IMPORTANT: The following variables should not be modified manually since their values are automatically given via script.
-      */
-      Rigidbody carRigidbody; // Stores the car's rigidbody.
+    /*
+    IMPORTANT: The following variables should not be modified manually since their values are automatically given via script.
+    */
+    Rigidbody carRigidbody; // Stores the car's rigidbody.
       float steeringAxis; // Used to know whether the steering wheel has reached the maximum value. It goes from -1 to 1.
       float throttleAxis; // Used to know whether the throttle has reached the maximum value. It goes from -1 to 1.
       float driftingAxis;
       float localVelocityZ;
       float localVelocityX;
-      
-      float driftingTime;
       bool deceleratingCar;
       bool touchControlsSetup = false;
       /*
@@ -652,13 +649,7 @@ public class PrometeoCarController : MonoBehaviour
       }else{
         isDrifting = false;
       }
-      if(isDrifting){
-        driftingTime += Time.deltaTime;
-      }else{
-         driftingTime = 0f;
-      }
 
-        driftAmount = driftingTime;
         //If the 'driftingAxis' value is not 1f, it means that the wheels have not reach their maximum drifting
         //value, so, we are going to continue increasing the sideways friction of the wheels until driftingAxis
         // = 1f.
