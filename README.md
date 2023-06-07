@@ -51,8 +51,11 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Screenshots
 
-Include screenshots or gameplay GIFs to showcase your game's visuals and gameplay.
+![Screenshot 2023-06-07 at 09 09 11](https://github.com/maksimrudek/Drifting-Game/assets/127964913/6bf44f64-8978-440f-a525-437494afd41d)
+![Screenshot 2023-06-07 at 09 09 29](https://github.com/maksimrudek/Drifting-Game/assets/127964913/12ad54ae-0cf6-483a-96c3-0d3baef6c422)
+![Screenshot 2023-06-07 at 09 09 48](https://github.com/maksimrudek/Drifting-Game/assets/127964913/e3206651-6596-4920-b8c5-e49a0fc79397)
 
 ## Credits
 
-- List any additional credits for assets, resources, or inspiration used in the game.
+- In game was used PrometheusCarController.
+- Racing Kit for track building from Kenney.
