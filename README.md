@@ -1,6 +1,6 @@
-# Drift Time
+# Arcade Drifting Game 
 
-Drift Time is a racing game where you can showcase your drifting skills and compete for the highest score. Drift through challenging tracks, accumulate drift scores, and aim for the best lap times. Test your precision and control as you navigate through tight corners and perform stylish drifts.
+Arcade Drifting Game is a racing game where you can showcase your drifting skills and compete for the highest score. Drift through challenging tracks, accumulate drift scores, and aim for the best lap times. Test your precision and control as you navigate through tight corners and perform stylish drifts.
 
 ## Gameplay
 
