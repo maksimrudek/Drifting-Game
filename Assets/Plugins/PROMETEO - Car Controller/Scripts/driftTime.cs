@@ -22,15 +22,13 @@ public class DriftTime : MonoBehaviour
     public GameObject restartButton;
     public GameObject aboutButton;
 
-    public Transform startingPosition;
-
     private float ScoreMultiplier = 100f;
     private bool blinkActive;
     private float BlinkDuration = 3f;
     private float blinkTimer;
     private float BlinkInterval = 0.5f;
 
-    private float countdownTimer = 10f;
+    private float countdownTimer = 100f;
     private bool isCountingDown = true;
 
     private int lap = 1;
@@ -115,6 +113,11 @@ public class DriftTime : MonoBehaviour
                 }
             }
         }
+
+        if (car.transform.position.y < -10f)
+        {
+            RestartGame();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -193,7 +196,7 @@ public class DriftTime : MonoBehaviour
 
         scoreText.gameObject.SetActive(true);
         int roundedScore = Mathf.RoundToInt(totalScore * lap);
-        scoreText.text = "Last Highest Score: " + roundedScore.ToString();
+        scoreText.text = "Score: " + roundedScore.ToString();
 
         
         restartButton.SetActive(true);
@@ -216,7 +219,7 @@ public class DriftTime : MonoBehaviour
         car.transform.position = originalCarPosition;
         car.transform.rotation = originalCarRotation;
 
-        countdownTimer = 10f;
+        countdownTimer = 100f;
         isCountingDown = true;
 
         driftAmount = 0f;
